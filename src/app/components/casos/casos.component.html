@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-3">
+     <div class="card">
+         <div class="card-body">
+
+            <!-- FORM -->
+             <form #casoForm="ngForm" (ngSubmit)="addCaso(casoForm)">
+
+                    <!-- THE Id's caso -->
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="casoService.selectedCaso._id">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="nombre" name="nombre"  [(ngModel)]="casoService.selectedCaso.nombre" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="apellidos" name="apellidos" [(ngModel)]="casoService.selectedCaso.apellidos" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="genero" name="genero" [(ngModel)]="casoService.selectedCaso.genero"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="clasificacion" name="clasificacion" [(ngModel)]="casoService.selectedCaso.clasificacion"/>
+                </div>
+               
+                <button class="btn btn-secondary">SAVE</button>
+            
+
+             </form>
+
+             <button class="btn btn-primary mr-2" (click)="cleanForm(casoForm)">
+                Clean
+            </button>
+         </div>
+     </div>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre 
+                    </th>
+                    <th>
+                        Apellidos
+                    </th>
+                    <th>
+                        Identificador
+                    </th>
+                    <th>
+                        Genero
+                    </th>
+                    <th>
+                        Clasificación
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let caso of casoService.casos">
+                    <td>{{caso.nombre}}</td>
+                    <td>{{caso.apellidos}}</td>
+                    <td>{{caso._id}}</td>
+                    <td>{{caso.genero}}</td>
+                    <td>{{caso.clasificacion}}</td>
+                    <td><button class="btn btn-secondary" (click)="editCaso(caso)">Edit</button></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
