@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CasoService} from '../../services/caso.service';
-import{FormsModule, NgForm} from '@angular/forms'
+import{FormGroup, FormsModule, NgForm} from '@angular/forms'
 import {Caso} from '../../models/caso'
 @Component({
   selector: 'app-casos',
@@ -19,6 +19,8 @@ constructor(public casoService: CasoService){}
     
   }
 
+  
+
 
   getCasos() {
 
@@ -34,7 +36,7 @@ constructor(public casoService: CasoService){}
 
 
   addCaso(form?: NgForm){
-   
+  
     if(form.value._id){
       this.casoService.putCasos(form.value).subscribe(
         (res) => {

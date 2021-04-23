@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { CasosComponent } from './components/casos/casos.component';
 import { SeguimientosComponent } from './components/seguimientos/seguimientos.component';
 
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { ColectivosComponent } from './components/colectivos/colectivos.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     CasosComponent,
-    SeguimientosComponent
+    SeguimientosComponent,
+    ColectivosComponent
   ],
   imports: [
     BrowserModule,

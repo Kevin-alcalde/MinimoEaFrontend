@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-3">
+     <div class="card">
+         <div class="card-body">
+
+            <!-- FORM -->
+             <form #colectivoForm="ngForm" (ngSubmit)="addColectivo(colectivoForm)">
+
+                    <!-- THE Id's caso -->
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="colectivoService.selectedColectivo._id">
+
+                <div class="form-group" >
+                    <input required= "nombre" type="text" class="form-control" placeholder="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="colectivoService.selectedColectivo.nombre" />
+                    <small class="form-text text-muted" *ngIf="nombre.touched && !nombre.valid">
+                        Error
+                    </small>
+                </div>
+                <div class="form-group">
+                    <input  type="text" class="form-control" placeholder="descripcion" name="descripcion" [(ngModel)]="colectivoService.selectedColectivo.descripcion" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="vacuna" name="vacuna" [(ngModel)]="colectivoService.selectedColectivo.vacuna"/>
+                </div>
+               
+                <button class="btn btn-primary" [disabled]="!colectivoForm.valid">SAVE</button>
+            
+
+             </form>
+
+             <button class="btn btn-primary mr-2" (click)="cleanForm(colectivoForm)">
+                Clean
+            </button>
+         </div>
+     </div>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre 
+                    </th>
+                    <th>
+                        Descripción
+                    </th>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Vacuna
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let colectivo of colectivoService.colectivos">
+                    <td>{{colectivo.nombre}}</td>
+                    <td>{{colectivo.descripcion}}</td>
+                    <td>{{colectivo._id}}</td>
+                    <td>{{colectivo.vacuna}}</td>
+                
+                    <td><button  (click)="deleteColectivo(colectivo._id, colectivoForm)" class="btn btn-danger btn-sm">Delete</button></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
